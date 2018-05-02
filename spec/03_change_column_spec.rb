@@ -2,6 +2,7 @@ require_relative 'spec_helper'
 require_relative '../db/migrate/01_create_students'
 require_relative '../db/migrate/02_add_grade_and_birthdate_to_students'
 require_relative '../db/migrate/03_change_datatype_for_birthdate'
+require_relative '../db/migrate/04_change_datatype_again_for_birthdate'
 
 describe 'student' do
   before do
@@ -11,6 +12,8 @@ describe 'student' do
     CreateStudents.new.change
     AddGradeAndBirthdateToStudents.new.change
     ChangeDatatypeForBirthdate.new.change
+    ChangeDatatypeAgainForBirthdate.new.change
+    #I set it as string in 03 and then it wouldn't let me rollback so I'm adding the above!!
     Student.reset_column_information
   end
 
